@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Logs</title>
+    <style>
+        :root {
+            --primary-dark: #2D3748;
+            --primary-medium: #4A5568;
+            --accent-teal: #38B2AC;
+            --accent-red: #E53E3E;
+            --accent-yellow: #ECC94B;
+            --background: #f8f9fa;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            margin: 0;
+            padding: 0;
+            color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 30px 0 40px;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin: 30px 0;
+        }
+
+        table th, table td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid #EDF2F7;
+        }
+
+        table th {
+            background-color: var(--primary-dark);
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover {
+            background-color: #F7FAFC;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .category-criminal {
+            background-color: #FED7D7;
+            color: #C53030;
+        }
+
+        .category-missing {
+            background-color: #FEFCBF;
+            color: #B7791F;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background-color: var(--accent-teal);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .back-button:hover {
+            background-color: #319795;
+            transform: translateY(-2px);
+        }
+
+        .back-button::before {
+            content: "←";
+            font-weight: bold;
+        }
+
+        .frame-img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid #EDF2F7;
+            transition: transform 0.3s ease;
+        }
+
+        .frame-img:hover {
+            transform: scale(1.8);
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .no-image {
+            color: #718096;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('home') }}" class="back-button">Back to Dashboard</a>
+        <h2>📋 Detection History Logs</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Person Name</th>
+                    <th>Category</th>
+                    <th>Last Location</th>
+                    <th>Time Detected</th>
+                    <th>Captured Frame</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log[0] }}</td>
+                        <td>
+                            <span class="category-badge {% if log[1] == 'criminal' %}category-criminal{% else %}category-missing{% endif %}">
+                                {{ log[1]|title }}
+                            </span>
+                        </td>
+                        <td>{{ log[2] }}</td>
+                        <td>{{ log[3] }}</td>
+                        <td>
+                            {% if log[4] %}
+                                <!-- <img src="{{ url_for('static', filename=log[4]) }}" 
+                                     class="frame-img" 
+                                     alt="Detected frame"
+                                     title="Click to enlarge"> -->
+                                     <img src="data:image/jpeg;base64,{{ frame_base64 }}" alt="Detected Frame">
+
+                            {% else %}
+                                <span class="no-image">No image available</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

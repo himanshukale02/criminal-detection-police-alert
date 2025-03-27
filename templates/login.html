@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        :root {
+            --primary-dark: #2D3748;
+            --primary-medium: #4A5568;
+            --accent-teal: #38B2AC;
+            --accent-teal-hover: #319795;
+            --background: #f8f9fa;
+            --card-bg: #FFFFFF;
+            --error-red: #E53E3E;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--background);
+        }
+
+        .login-container {
+            width: 320px;
+            padding: 30px;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--accent-teal-hover);
+            font-size: 20px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: 500;
+            color: var(--primary-medium);
+            font-size: 14px;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid var(--primary-medium);
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.1);
+        }
+
+        button {
+            padding: 12px;
+            background-color: var(--accent-teal);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-teal-hover);
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: var(--error-red);
+            text-align: center;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>AI Powered Thief Detection</h1>
+        <h2>Admin Login</h2>
+        <form method="POST" action="/login">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

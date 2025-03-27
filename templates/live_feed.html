@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Detection Feed</title>
+    <style>
+        :root {
+            --primary-dark: #2D3748;
+            --primary-medium: #4A5568;
+            --accent-teal: #38B2AC;
+            --accent-red: #E53E3E;
+            --accent-yellow: #ECC94B;
+            --background: #f8f9fa;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .video-feed {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid #EDF2F7;
+        }
+
+        .video-feed:hover {
+            transform: translateY(-3px);
+        }
+
+        .client-name {
+            text-align: center;
+            font-weight: 600;
+            padding: 12px;
+            background-color: var(--primary-dark);
+            color: white;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .video-feed img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #EDF2F7;
+        }
+
+        .detection-info {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #F7FAFC;
+            border-radius: 8px;
+        }
+
+        .alert {
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            display: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .alert-criminal {
+            background-color: var(--accent-red);
+            color: white;
+            border-left: 4px solid #C53030;
+        }
+
+        .alert-missing {
+            background-color: var(--accent-yellow);
+            color: var(--primary-dark);
+            border-left: 4px solid #D69E2E;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background-color: var(--accent-teal);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #319795;
+            transform: translateY(-2px);
+        }
+
+        .back-button::before {
+            content: "←";
+            font-weight: bold;
+        }
+
+        .name {
+            font-weight: 600;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('home') }}" class="back-button">Back to Dashboard</a>
+        <h1>📡 Live Detection Monitoring</h1>
+        
+        <div class="video-container">
+            <div class="video-feed">
+                <div class="client-name">📸 Camera 1 - Main Entrance</div>
+                <img src="{{ url_for('video_feed', client_id='Mall-Entrance') }}" alt="Camera 1 Feed">
+                <div class="detection-info" id="info-client1">
+                    <div class="alert alert-criminal" id="alert-criminal-client1">
+                        🚨 Criminal Detected: <span class="name"></span>
+                    </div>
+                    <div class="alert alert-missing" id="alert-missing-client1">
+                        🔍 Missing Person Detected: <span class="name"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-feed">
+                <div class="client-name">📸 Camera 2 - Parking Lot</div>
+                <img src="{{ url_for('video_feed', client_id='client2') }}" alt="Camera 2 Feed">
+                <div class="detection-info" id="info-client2">
+                    <div class="alert alert-criminal" id="alert-criminal-client2">
+                        🚨 Criminal Detected: <span class="name"></span>
+                    </div>
+                    <div class="alert alert-missing" id="alert-missing-client2">
+                        🔍 Missing Person Detected: <span class="name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateDetectionInfo(clientId, detectedInfo) {
+            const criminalAlert = document.getElementById(`alert-criminal-${clientId}`);
+            const missingAlert = document.getElementById(`alert-missing-${clientId}`);
+            
+            // Reset alerts
+            criminalAlert.style.display = 'none';
+            missingAlert.style.display = 'none';
+            
+            detectedInfo.forEach(info => {
+                if (info.category === 'criminal') {
+                    criminalAlert.querySelector('.name').textContent = info.name;
+                    criminalAlert.style.display = 'block';
+                } else if (info.category === 'missing') {
+                    missingAlert.querySelector('.name').textContent = info.name;
+                    missingAlert.style.display = 'block';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Known Faces and Encodings</title>
+    <style>
+        :root {
+    --primary-dark: #2D3748;
+    --primary-medium: #4A5568;
+    --accent-teal: #38B2AC;
+    --accent-teal-hover: #319795;
+    --background: #f8f9fa;
+    --card-bg: #FFFFFF;
+    --text-color: #2D3748;
+    --border-color: #CBD5E0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 30px;
+    background-color: var(--background);
+    color: var(--text-color);
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-medium);
+    color: white;
+    font-weight: 600;
+}
+
+td {
+    color: var(--text-color);
+}
+
+tr:nth-child(even) {
+    background-color: #F7FAFC;
+}
+
+tr:hover {
+    background-color: #E2E8F0;
+    transition: background-color 0.3s ease;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #F7FAFC;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin: 0;
+    overflow: auto;
+    font-size: 14px;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--accent-teal);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background-color: var(--accent-teal-hover);
+    transform: translateY(-2px);
+}
+
+    </style>
+</head>
+<body>
+    <h2>Known Faces and Their Encodings</h2>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>Category</th>
+                <th>Details</th>
+                <th>Face Encoding</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for face in known_faces %}
+                <tr>
+                    <td>{{ face.name }}</td>
+                    <td>{{ face.age }}</td>
+                    <td>{{ face.city }}</td>
+                    <td>{{ face.category }}</td>
+                    <td>{{ face.details }}</td>
+                    <!-- <td>
+                        {% if face.encoding %}
+                            <pre>{{ face.encoding }}</pre> 
+                        {% else %}
+                            No encoding available
+                        {% endif %}
+                    </td>                     -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
