@@ -3,11 +3,14 @@ import sqlite3
 import face_recognition
 import numpy as np
 import cv2
+import os
 import pickle
+import requests
 import threading
 import time
 from datetime import datetime
 from twilio.rest import Client
+
 
 
 
@@ -35,29 +38,51 @@ def get_detection_records():
     conn.close()
     return records
 
+IMGUR_CLIENT_ID = ""
+
+def upload_to_imgur(image_path):
+    """Uploads an image to Imgur and returns the direct image URL."""
+    headers = {"Authorization": f"Client-ID {IMGUR_CLIENT_ID}"}
+    with open(image_path, "rb") as image_file:
+        response = requests.post(
+            "https://api.imgur.com/3/image",
+            headers=headers,
+            files={"image": image_file}
+        )
+    
+    if response.status_code == 200:
+        return response.json()["data"]["link"]
+    else:
+        print("❌ Imgur upload failed:", response.json())
+        return None
+
 sms_cooldown = {}
 SMS_COOLDOWN_TIME = 20  # 2 minutes
 
-def send_sms_alert(name, category, location):
+def send_sms_alert(name, category, location, frame):
+    """Sends an SMS alert with an image link via Imgur."""
     global sms_cooldown
     current_time = time.time()
 
-    # Debugging print statements
-    print(f"Checking cooldown for {name}...")
-
-    # Check if the same person was alerted within the cooldown period
-    if name in sms_cooldown:
-        time_since_last_sms = current_time - sms_cooldown[name]
-        print(f"Time since last SMS for {name}: {time_since_last_sms} seconds")
-
-        if time_since_last_sms < SMS_COOLDOWN_TIME:
-            print(f"⏳ SMS alert for {name} skipped due to 2-minute cooldown.")
-            return
+    # Cooldown Check
+    if name in sms_cooldown and (current_time - sms_cooldown[name]) < SMS_COOLDOWN_TIME:
+        print(f"⏳ SMS alert for {name} skipped due to cooldown.")
+        return
 
     try:
         recipient_number = LOCATION_PHONE_MAPPING.get(location, LOCATION_PHONE_MAPPING["Unknown"])
         message = f"🚨 ALERT: {category} detected - {name} at {location}. Immediate action required!"
 
+        # Save frame locally
+        image_path = f"{name}_detected.jpg"
+        cv2.imwrite(image_path, frame)
+
+        # Upload to Imgur
+        image_url = upload_to_imgur(image_path)
+        if image_url:
+            message += f" View image: {image_url}"
+
+        # Send SMS
         client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
         client.messages.create(
             body=message,
@@ -65,13 +90,17 @@ def send_sms_alert(name, category, location):
             to=recipient_number
         )
 
-        # Update the last SMS sent time for the person
+        # Update cooldown time
         sms_cooldown[name] = current_time
+
+        # Remove local image file after upload
+        os.remove(image_path)
 
         print(f"✅ SMS Alert Sent to {recipient_number}: {message}")
 
     except Exception as e:
         print(f"❌ Error sending SMS: {e}")
+
 
 def log_detection(name, category, frame, location="Unknown"):
     try:
@@ -89,7 +118,7 @@ def log_detection(name, category, frame, location="Unknown"):
         print(f"ALERT: {category} detected - {name} at {location}")
 
         if category.lower() in ["criminal", "suspicious"]:
-            send_sms_alert(name, category, location)
+            send_sms_alert(name, category, location, frame)  # ✅ FIXED - Passing 'frame'
     except Exception as e:
         print(f"Error logging detection: {e}")
 
