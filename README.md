@@ -32,7 +32,7 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
    ![Record Addition Screen](https://github.com/user-attachments/assets/44d164ab-0c13-46e5-b1f9-047668bec2c0)
 
 3. **Video Feed Monitoring**  
-   ![Live Monitoring Interface](https://github.com/user-attachments/assets/e8c7761b-26b2-4d79-936b-495ba10cb02e)
+   ![Live Monitoring Interface](https://github.com/user-attachments/assets/237e7067-90f1-4e8c-992b-3aaec8c2caa6)
 
 4. **Facial Recognition Processing**  
    System continuously analyzes frames for potential matches
@@ -43,7 +43,7 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
    - SMS alert is dispatched to nearest authorized contact
    - Detection appears on the dashboard
 
-   ![SMS Alert Example](https://github.com/user-attachments/assets/9f42b4e4-389b-4fbd-9e4e-09527a2537ec)
+   ![Image](https://github.com/user-attachments/assets/9365eca8-66fc-442e-9941-79fe60e1255e)
 
 6. **System Management**  
    **Database Records**  
