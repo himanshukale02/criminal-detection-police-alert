@@ -47,10 +47,10 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
 
 6. **System Management**  
    **Database Records**  
-   ![Records Database View](https://github.com/user-attachments/assets/2b94a1f7-5932-4ad8-8dbc-b8f74610493a)  
+   ![Image](https://github.com/user-attachments/assets/e51fd3c6-b3eb-4dfa-8a27-77b2b17df67b)
 
    **Detection History**  
-   ![Log History Screen](https://github.com/user-attachments/assets/aff5a715-1a8d-4b42-aa71-978bf2631b64)
+   ![Image](https://github.com/user-attachments/assets/2bc87da2-9411-423d-9216-6be604cad5f3)
 
 ## 🌐 API Endpoints
 
