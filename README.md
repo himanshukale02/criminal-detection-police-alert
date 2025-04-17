@@ -46,12 +46,11 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
    - Detection appears on the dashboard
 
    ![Image](https://github.com/user-attachments/assets/9365eca8-66fc-442e-9941-79fe60e1255e)
-
-7. **System Management**  
-   **Database Records**  
+  
+7. **Database Records**  
    ![Image](https://github.com/user-attachments/assets/e51fd3c6-b3eb-4dfa-8a27-77b2b17df67b)
 
-   **Detection History**  
+8. **Detection History**  
    ![Image](https://github.com/user-attachments/assets/2bc87da2-9411-423d-9216-6be604cad5f3)
 
 ## 🌐 API Endpoints
