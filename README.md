@@ -24,12 +24,14 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
 | Notifications | Twilio API |
 
 ## 🔄 System Workflow
+1. **Admin Login**  
+   ![Image](https://github.com/user-attachments/assets/775e22cd-4204-4bbe-8527-8755f88576ba)
 
 1. **Administrator Authentication**  
    ![Admin Login Interface](https://github.com/user-attachments/assets/095d9220-554d-409d-a4bc-53c9397c2a9d)
 
-2. **Database Management**  
-   ![Record Addition Screen](https://github.com/user-attachments/assets/44d164ab-0c13-46e5-b1f9-047668bec2c0)
+2. **Adding Records**  
+   ![Image](https://github.com/user-attachments/assets/286aa271-7804-4683-ae0e-fbbba025a376)
 
 3. **Video Feed Monitoring**  
    ![Live Monitoring Interface](https://github.com/user-attachments/assets/237e7067-90f1-4e8c-992b-3aaec8c2caa6)
