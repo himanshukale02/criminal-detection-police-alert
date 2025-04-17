@@ -27,19 +27,19 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
 1. **Admin Login**  
    ![Image](https://github.com/user-attachments/assets/775e22cd-4204-4bbe-8527-8755f88576ba)
 
-1. **Administrator Authentication**  
-   ![Admin Login Interface](https://github.com/user-attachments/assets/095d9220-554d-409d-a4bc-53c9397c2a9d)
+2. **Admin Dashboard**  
+   ![Image](https://github.com/user-attachments/assets/98c61f2f-6e4a-4b1a-a439-f2ffc575a4fa)
 
-2. **Adding Records**  
+3. **Adding Records**  
    ![Image](https://github.com/user-attachments/assets/286aa271-7804-4683-ae0e-fbbba025a376)
 
-3. **Video Feed Monitoring**  
+4. **Video Feed Monitoring**  
    ![Live Monitoring Interface](https://github.com/user-attachments/assets/237e7067-90f1-4e8c-992b-3aaec8c2caa6)
 
-4. **Facial Recognition Processing**  
+5. **Facial Recognition Processing**  
    System continuously analyzes frames for potential matches
 
-5. **Alert Generation**  
+6. **Alert Generation**  
    When matches are found:
    - Event is logged in the database
    - SMS alert is dispatched to nearest authorized contact
@@ -47,7 +47,7 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
 
    ![Image](https://github.com/user-attachments/assets/9365eca8-66fc-442e-9941-79fe60e1255e)
 
-6. **System Management**  
+7. **System Management**  
    **Database Records**  
    ![Image](https://github.com/user-attachments/assets/e51fd3c6-b3eb-4dfa-8a27-77b2b17df67b)
 
