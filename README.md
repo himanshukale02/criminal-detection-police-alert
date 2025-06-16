@@ -28,7 +28,7 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
    ![Image](https://github.com/user-attachments/assets/775e22cd-4204-4bbe-8527-8755f88576ba)
 
 2. **Admin Dashboard**  
-   ![Image](https://github.com/user-attachments/assets/98c61f2f-6e4a-4b1a-a439-f2ffc575a4fa)
+   ![Image](https://github.com/user-attachments/assets/f61c5285-b2ad-4859-8a7d-3b9dd2182d8a)
 
 3. **Adding Records**  
    ![Image](https://github.com/user-attachments/assets/286aa271-7804-4683-ae0e-fbbba025a376)
@@ -48,10 +48,10 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
    ![Image](https://github.com/user-attachments/assets/9365eca8-66fc-442e-9941-79fe60e1255e)
   
 7. **Database Records**  
-   ![Image](https://github.com/user-attachments/assets/e51fd3c6-b3eb-4dfa-8a27-77b2b17df67b)
-
-8. **Detection History**  
-   ![Image](https://github.com/user-attachments/assets/2bc87da2-9411-423d-9216-6be604cad5f3)
+   ![Image](https://github.com/user-attachments/assets/fc0e7988-a18d-4acc-8a52-a5b3acb39108)
+   
+9. **Detection History**  
+   [Image](https://github.com/user-attachments/assets/91cab068-d205-4825-b83c-44743a88b9b3)
 
 ## 🌐 API Endpoints
 
