@@ -51,7 +51,7 @@ This cutting-edge platform uses **real-time facial recognition technology** to i
    ![Image](https://github.com/user-attachments/assets/fc0e7988-a18d-4acc-8a52-a5b3acb39108)
    
 9. **Detection History**  
-   [Image](https://github.com/user-attachments/assets/91cab068-d205-4825-b83c-44743a88b9b3)
+   ![Image](https://github.com/user-attachments/assets/c0645288-6a3f-4fc3-8a8d-ce3c27db1ea9)
 
 ## 🌐 API Endpoints
 
