@@ -181,6 +181,7 @@
                 <li><a href="{{ url_for('live_feed') }}">📷 Live Feed</a></li>
                 <li><a href="{{ url_for('view_records') }}">📋 View Records</a></li>
                 <li><a href="{{ url_for('detection_logs') }}">📊 Detection Logs</a></li>
+                <li><a href="{{ url_for('delete_record') }}">Delete Record</a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -204,6 +205,11 @@
                     <h2>Detection History</h2>
                     <p>Review comprehensive logs of all detection events and system alerts</p>
                     <a href="{{ url_for('detection_logs') }}" class="btn">📈 View Analytics</a>
+                </div>
+                <div class="menu-item">
+                    <h2>Delete Record</h2>
+                    <p>Deletes specific record from database</p>
+                    <a href="{{ url_for('delete_record') }}" class="btn">📈 Delete Record</a>
                 </div>
             </div>
         </div>

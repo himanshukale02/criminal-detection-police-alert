@@ -144,7 +144,7 @@
                     <th>Category</th>
                     <th>Last Location</th>
                     <th>Time Detected</th>
-                    <th>Captured Frame</th>
+                    <!-- <th>Captured Frame</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -158,18 +158,19 @@
                         </td>
                         <td>{{ log[2] }}</td>
                         <td>{{ log[3] }}</td>
-                        <td>
+                        <!-- <td>
                             {% if log[4] %}
-                                <!-- <img src="{{ url_for('static', filename=log[4]) }}" 
+                                <img src="{{ url_for('static', filename=log[4]) }}" 
                                      class="frame-img" 
                                      alt="Detected frame"
-                                     title="Click to enlarge"> -->
+                                     title="Click to enlarge">
                                      <img src="data:image/jpeg;base64,{{ frame_base64 }}" alt="Detected Frame">
 
                             {% else %}
                                 <span class="no-image">No image available</span>
                             {% endif %}
-                        </td>
+                        </td> -->
+                        
                     </tr>
                 {% endfor %}
             </tbody>
